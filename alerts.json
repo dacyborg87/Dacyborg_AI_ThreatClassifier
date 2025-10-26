@@ -1,0 +1,5 @@
+{"timestamp": "2025-10-26T21:00:00.123Z", "rule": {"id": "5712", "level": 3, "description": "SSH successful login"}, "agent": {"id": "001", "name": "ubuntu-web"}, "decoder": {"name": "ssh"}}
+{"timestamp": "2025-10-26T21:05:10.555Z", "rule": {"id": "5702", "level": 7, "description": "Multiple failed SSH logins"}, "agent": {"id": "002", "name": "kali-lab"}, "decoder": {"name": "sshd"}}
+{"timestamp": "2025-10-26T21:07:42.002Z", "rule": {"id": "31151", "level": 10, "description": "Suspicious PowerShell execution"}, "agent": {"id": "003", "name": "win11-host"}, "decoder": {"name": "powershell"}}
+{"timestamp": "2025-10-26T21:09:31.902Z", "rule": {"id": "5715", "level": 5, "description": "Possible port scan detected"}, "agent": {"id": "004", "name": "suricata-sensor"}, "decoder": {"name": "suricata"}}
+{"timestamp": "2025-10-26T21:11:12.333Z", "rule": {"id": "60100", "level": 12, "description": "Ransomware behavior detected"}, "agent": {"id": "005", "name": "dc-server"}, "decoder": {"name": "sysmon"}}

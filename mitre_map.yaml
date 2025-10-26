@@ -1,0 +1,33 @@
+# Very small starter map: keywords in the alert description -> ATT&CK technique ID + name
+rules:
+  - keyword: "ransomware"
+    technique: "T1486"
+    name: "Data Encrypted for Impact"
+    tactic: "Impact"
+    remediation: |
+      Isolate affected host; kill malicious processes; restore from clean backups;
+      rotate credentials; block IOCs; run full EDR sweep.
+
+  - keyword: "powershell"
+    technique: "T1059.001"
+    name: "Command and Scripting Interpreter: PowerShell"
+    tactic: "Execution"
+    remediation: |
+      Restrict PowerShell to Constrained Language Mode; enable script block logging;
+      alert on base64-encoded commands; validate signed scripts only.
+
+  - keyword: "failed ssh"
+    technique: "T1110"
+    name: "Brute Force"
+    tactic: "Credential Access"
+    remediation: |
+      Enforce MFA; throttle login attempts; block offending IPs; review exposed SSH;
+      rotate creds; consider port knocking or VPN-only access.
+
+  - keyword: "port scan"
+    technique: "T1046"
+    name: "Network Service Discovery"
+    tactic: "Discovery"
+    remediation: |
+      Rate-limit scanning; segment networks; monitor for unusual lateral movement;
+      block sources at firewall; validate need for open services.

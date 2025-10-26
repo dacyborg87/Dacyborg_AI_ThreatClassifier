@@ -1,0 +1,46 @@
+{
+  "generated_at": "2025-10-26T23:15:47.447844+00:00",
+  "counts": {
+    "Low": 1,
+    "Medium": 2,
+    "High": 1,
+    "Critical": 1
+  },
+  "top_alerts": [
+    {
+      "level": 12,
+      "severity": "Critical",
+      "description": "Ransomware behavior detected",
+      "timestamp": "2025-10-26T21:11:12.333Z",
+      "agent": "dc-server"
+    },
+    {
+      "level": 10,
+      "severity": "High",
+      "description": "Suspicious PowerShell execution",
+      "timestamp": "2025-10-26T21:07:42.002Z",
+      "agent": "win11-host"
+    },
+    {
+      "level": 7,
+      "severity": "Medium",
+      "description": "Multiple failed SSH logins",
+      "timestamp": "2025-10-26T21:05:10.555Z",
+      "agent": "kali-lab"
+    },
+    {
+      "level": 5,
+      "severity": "Medium",
+      "description": "Possible port scan detected",
+      "timestamp": "2025-10-26T21:09:31.902Z",
+      "agent": "suricata-sensor"
+    },
+    {
+      "level": 3,
+      "severity": "Low",
+      "description": "SSH successful login",
+      "timestamp": "2025-10-26T21:00:00.123Z",
+      "agent": "ubuntu-web"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# config.yaml
+input_file: alerts.json
+output_summary: summary.json
+
+# severity thresholds (Wazuh "level")
+low_lt: 5         # <5 = Low
+medium_gte: 5     # 5-7 = Medium
+high_gte: 8       # 8-10 = High
+critical_gte: 11  # 11+ = Critical
+
+logging:
+  level: INFO
+  file: classifier.log
