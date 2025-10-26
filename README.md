@@ -1,49 +1,77 @@
-# DaCyborg AI Threat Classifier (Starter)
+# DaCyborg AI Threat Classifier  
 
-Welcome DJ! This is a beginner-friendly starter project you can run in minutes.
+A beginner‑friendly tool that reads Wazuh‑style alerts, classifies them by severity, summarizes the results, and sets the stage for AI‑driven MITRE ATT&CK mapping and SOC‑ready reporting.  
 
-## What this does
-- Reads Wazuh-style alerts from `alerts.json` (JSON Lines format).
-- Classifies each alert into Low / Medium / High / Critical based on Wazuh `level`.
-- Prints a severity summary and the top 5 alerts.
-- Saves a `summary.json` we will use in the next AI step (LLM classification + remediation tips).
+## Features  
 
-## How to run (Mac, very beginner-friendly)
+- Reads alerts from `alerts.json` (JSON Lines format) and classifies each alert into Low, Medium, High or Critical severity based on configurable thresholds.  
+- Generates a summary report (`summary.json`) and prints a severity table with the top five alerts.  
+- Starter scripts (`wazuh_alert_classifier.py` and `generate_report.py`) that will evolve to map alerts to MITRE ATT&CK techniques, suggest remediation steps, and produce SOC‑ready markdown reports.  
 
-1) **Open Terminal** (Spotlight → type "Terminal").  
-2) **Go to your Downloads folder** (or wherever you saved this project):  
-   ```bash
-   cd ~/Downloads
-   ```
-3) **Unzip the project** (if you downloaded the ZIP):  
-   - Double-click the ZIP, or run:  
-     ```bash
-     unzip DaCyborg_AI_ThreatClassifier.zip -d DaCyborg_AI_ThreatClassifier
-     cd DaCyborg_AI_ThreatClassifier
-     ```
-   If you're not using the ZIP and just copied the files, `cd` into the project folder.
+## Installation  
 
-4) **Run the script**:  
-   ```bash
-   python3 wazuh_alert_classifier.py
-   ```
+1. **Clone the repository** or download the ZIP.  
+2. Ensure you have Python 3.9 or newer installed.  
+3. *(Optional)* Create and activate a virtual environment:  
+   ```bash  
+   python3 -m venv .venv  
+   source .venv/bin/activate  # on Windows use .venv\Scripts\activate  
+   ```  
+4. Install dependencies:  
+   ```bash  
+   pip install -r requirements.txt  
+   ```  
 
-You should see a severity table and a list of top alerts. A file called `summary.json` will be created.
+## Usage  
 
-## Using a real Wazuh alerts file (optional)
-If you have Wazuh installed, you can copy the real alerts file into this folder:
-```bash
-# Adjust the source path if needed:
-cp /var/ossec/logs/alerts/alerts.json ./alerts.json
-python3 wazuh_alert_classifier.py
-```
+### Run the classifier with sample alerts  
 
-> Tip: You'll need permission to read Wazuh logs. If the copy fails, prepend `sudo` and enter your password.
+A sample `alerts.json` is provided in this repository. To classify the alerts and create a summary, run:  
 
-## Next step
-We’ll add an **AI classifier** to read `summary.json` and:
-- Map likely MITRE ATT&CK techniques
-- Suggest remediation steps
-- Generate a SOC-ready markdown report
+```bash  
+python3 wazuh_alert_classifier.py  
+```  
 
-Keep this folder — we’ll build on it next.
+The script will classify alerts, print a severity table, and write `summary.json` with aggregated results.  
+
+### Using a real Wazuh alerts file  
+
+If you have Wazuh installed, you can copy the real alerts file into this folder and run the classifier:  
+
+```bash  
+cp /var/ossec/logs/alerts/alerts.json ./alerts.json  
+python3 wazuh_alert_classifier.py  
+```  
+
+You may need `sudo` when copying if you lack permission.  
+
+### Generating a SOC‑ready report  
+
+After running the classifier, you can generate a report using the MITRE mapping:  
+
+```bash  
+python3 generate_report.py  
+```  
+
+This reads `summary.json` and `mitre_map.yaml` to produce `report.md` with mapped techniques and remediation suggestions.  
+
+## Configuration  
+
+- **config.yaml** – defines thresholds for severity classification (`low_lt`, `medium_gt`, `high_gt`, `critical_gt`). Adjust these values to tune the classifier.  
+- **mitre_map.yaml** – maps keywords from alert descriptions to MITRE ATT&CK techniques and provides remediation guidance. Customize mappings to suit your environment.  
+
+## Roadmap  
+
+- Integrate an AI classifier to enrich `summary.json` with MITRE ATT&CK techniques automatically.  
+- Suggest remediation steps using AI models.  
+- Package the tool for easy installation and include a command‑line interface.  
+- Add continuous‑integration tests and code coverage.  
+- Publish releases and container images.  
+
+## Contributing  
+
+Contributions are welcome! Please open issues or submit pull requests for new features, bug fixes, or improvements. A `CONTRIBUTING.md` guide will be added soon.  
+
+## License  
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
